@@ -208,8 +208,8 @@ Le dernier terminal doit rester ouvert. L'application est accessible sur <http:/
 Pour reconstruire le frontend avec son propre namespace Docker Hub :
 
 ```powershell
-docker build -t VOTRE_USERNAME/cofrap-frontend:0.3.0 .\frontend
-docker push VOTRE_USERNAME/cofrap-frontend:0.3.0
+docker build -t VOTRE_USERNAME/cofrap-frontend:0.4.0 .\frontend
+docker push VOTRE_USERNAME/cofrap-frontend:0.4.0
 ```
 
 Modifier ensuite l'image dans `k8s/frontend.yaml` avant `kubectl apply`.

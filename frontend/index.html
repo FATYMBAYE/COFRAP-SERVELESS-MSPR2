@@ -1,9 +1,9 @@
-﻿<!doctype html>
+<!doctype html>
 <html lang="fr">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>COFRAP | Gestion des accès</title>
+  <title>COFRAP | Espace utilisateur</title>
   <link rel="stylesheet" href="styles.css">
 </head>
 <body>
@@ -12,17 +12,17 @@
       <div class="brand-mark" aria-hidden="true">C</div>
       <div>
         <strong>COFRAP</strong>
-        <span>Gestion des accès</span>
+        <span>Espace utilisateur</span>
       </div>
     </div>
     <div class="environment"><span></span> Environnement sécurisé</div>
   </header>
 
   <main class="workspace">
-    <aside class="sidebar" aria-label="Navigation principale">
+    <aside class="sidebar" aria-label="Navigation utilisateur">
       <button class="nav-item active" data-view="create" type="button">
         <span class="nav-icon">+</span>
-        Créer un compte
+        Créer mon compte
       </button>
       <button class="nav-item" data-view="authenticate" type="button">
         <span class="nav-icon">✓</span>
@@ -39,13 +39,13 @@
 
       <section class="view active" id="view-create">
         <div class="view-header">
-          <p class="eyebrow">Administration des identités</p>
-          <h1>Créer un compte</h1>
-          <p>Générez les identifiants initiaux et activez la double authentification.</p>
+          <p class="eyebrow">Espace utilisateur</p>
+          <h1>Créer mon compte</h1>
+          <p>Créez votre compte et configurez votre double authentification.</p>
         </div>
 
         <form id="create-form" class="form-panel">
-          <label for="create-username">Adresse utilisateur</label>
+          <label for="create-username">Adresse e-mail</label>
           <div class="field-row">
             <input id="create-username" name="username" type="email" placeholder="prenom.nom@cofrap.fr" autocomplete="off" required>
             <button class="primary-button" type="submit">Créer le compte</button>
@@ -83,11 +83,11 @@
         <div class="view-header">
           <p class="eyebrow">Contrôle d’accès</p>
           <h1>Authentification</h1>
-          <p>Validez le mot de passe et le code temporaire de l’utilisateur.</p>
+          <p>Saisissez votre mot de passe et le code temporaire de votre application Authenticator.</p>
         </div>
 
         <form id="authenticate-form" class="form-panel stacked-form">
-          <label for="auth-username">Adresse utilisateur</label>
+          <label for="auth-username">Adresse e-mail</label>
           <input id="auth-username" name="username" type="email" placeholder="prenom.nom@cofrap.fr" autocomplete="username" required>
 
           <label for="auth-password">Mot de passe</label>
@@ -112,11 +112,11 @@
         <div class="view-header">
           <p class="eyebrow">Cycle de sécurité</p>
           <h1>Renouveler les identifiants</h1>
-          <p>Remplacez le mot de passe et le secret 2FA d’un compte existant.</p>
+          <p>Renouvelez votre mot de passe et votre secret 2FA lorsque vos identifiants ont expiré.</p>
         </div>
 
         <form id="rotate-form" class="form-panel">
-          <label for="rotate-username">Adresse utilisateur</label>
+          <label for="rotate-username">Adresse e-mail</label>
           <div class="field-row">
             <input id="rotate-username" name="username" type="email" placeholder="prenom.nom@cofrap.fr" autocomplete="off" required>
             <button class="primary-button" type="submit">Renouveler</button>
