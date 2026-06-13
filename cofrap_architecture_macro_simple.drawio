@@ -1,0 +1,62 @@
+<mxGraphModel dx="1422" dy="762" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1654" pageHeight="1169" math="0" shadow="0">
+  <root>
+    <mxCell id="0" />
+    <mxCell id="1" parent="0" />
+
+    <mxCell id="title" value="COFRAP - Architecture macro" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;fontSize=26;fontStyle=1;fontColor=#172033;" vertex="1" parent="1">
+      <mxGeometry x="250" y="60" width="1150" height="45" as="geometry" />
+    </mxCell>
+
+    <mxCell id="users" value="&lt;b&gt;Utilisateurs COFRAP&lt;/b&gt;&lt;br&gt;Navigateur web" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f8f9fa;strokeColor=#868e96;fontSize=15;fontColor=#212529;spacing=12;" vertex="1" parent="1">
+      <mxGeometry x="90" y="330" width="220" height="95" as="geometry" />
+    </mxCell>
+
+    <mxCell id="frontend" value="&lt;b&gt;Interface web&lt;/b&gt;&lt;br&gt;HTML / CSS / JavaScript" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#fff8e1;strokeColor=#f9a825;fontSize=15;fontColor=#3e2723;spacing=12;" vertex="1" parent="1">
+      <mxGeometry x="410" y="330" width="230" height="95" as="geometry" />
+    </mxCell>
+
+    <mxCell id="platform" value="&lt;b&gt;Plateforme serverless&lt;/b&gt;&lt;br&gt;Kubernetes / Minikube&lt;br&gt;OpenFaaS" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#e8f1ff;strokeColor=#4263eb;fontSize=15;fontColor=#172033;spacing=12;" vertex="1" parent="1">
+      <mxGeometry x="750" y="310" width="260" height="135" as="geometry" />
+    </mxCell>
+
+    <mxCell id="functions" value="&lt;b&gt;Fonctions métier&lt;/b&gt;&lt;br&gt;Python&lt;br&gt;Comptes / QR / 2FA" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#e7f5ff;strokeColor=#228be6;fontSize=15;fontColor=#102a43;spacing=12;" vertex="1" parent="1">
+      <mxGeometry x="1120" y="310" width="240" height="135" as="geometry" />
+    </mxCell>
+
+    <mxCell id="database" value="&lt;b&gt;Données&lt;/b&gt;&lt;br&gt;PostgreSQL" style="shape=cylinder3d;whiteSpace=wrap;html=1;boundedLbl=1;backgroundOutline=1;size=15;fillColor=#d3f9d8;strokeColor=#2b8a3e;fontSize=15;fontColor=#063b2f;" vertex="1" parent="1">
+      <mxGeometry x="1450" y="320" width="135" height="115" as="geometry" />
+    </mxCell>
+
+    <mxCell id="deploy" value="&lt;b&gt;Déploiement&lt;/b&gt;&lt;br&gt;GitHub - Docker - OCI Registry" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#fff2cc;strokeColor=#d6b656;fontSize=14;fontColor=#2f2f2f;spacing=10;dashed=1;" vertex="1" parent="1">
+      <mxGeometry x="720" y="560" width="310" height="80" as="geometry" />
+    </mxCell>
+
+    <mxCell id="security" value="&lt;b&gt;Sécurité&lt;/b&gt;&lt;br&gt;HTTPS - Secrets - Hash - 2FA" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#fff0f6;strokeColor=#c2255c;fontSize=14;fontColor=#4a1028;spacing=10;dashed=1;" vertex="1" parent="1">
+      <mxGeometry x="1080" y="560" width="300" height="80" as="geometry" />
+    </mxCell>
+
+    <mxCell id="f1" value="" style="endArrow=block;html=1;rounded=0;strokeWidth=3;strokeColor=#495057;" edge="1" parent="1" source="users" target="frontend">
+      <mxGeometry relative="1" as="geometry" />
+    </mxCell>
+
+    <mxCell id="f2" value="" style="endArrow=block;html=1;rounded=0;strokeWidth=3;strokeColor=#495057;" edge="1" parent="1" source="frontend" target="platform">
+      <mxGeometry relative="1" as="geometry" />
+    </mxCell>
+
+    <mxCell id="f3" value="" style="endArrow=block;html=1;rounded=0;strokeWidth=3;strokeColor=#495057;" edge="1" parent="1" source="platform" target="functions">
+      <mxGeometry relative="1" as="geometry" />
+    </mxCell>
+
+    <mxCell id="f4" value="" style="endArrow=block;html=1;rounded=0;strokeWidth=3;strokeColor=#495057;" edge="1" parent="1" source="functions" target="database">
+      <mxGeometry relative="1" as="geometry" />
+    </mxCell>
+
+    <mxCell id="f5" value="" style="endArrow=block;html=1;rounded=0;strokeWidth=2;strokeColor=#d6b656;dashed=1;" edge="1" parent="1" source="deploy" target="platform">
+      <mxGeometry relative="1" as="geometry" />
+    </mxCell>
+
+    <mxCell id="f6" value="" style="endArrow=block;html=1;rounded=0;strokeWidth=2;strokeColor=#c2255c;dashed=1;" edge="1" parent="1" source="security" target="functions">
+      <mxGeometry relative="1" as="geometry" />
+    </mxCell>
+  </root>
+</mxGraphModel>

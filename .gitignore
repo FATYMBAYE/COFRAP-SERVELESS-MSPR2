@@ -1,0 +1,30 @@
+# OpenFaaS build artifacts
+template/
+build/
+
+# Secrets and local configuration
+.secrets/
+.env
+.env.*
+!.env.example
+
+# Python
+__pycache__/
+*.py[cod]
+.pytest_cache/
+.venv/
+venv/
+.coverage
+htmlcov/
+
+# Editors and local notebooks
+.vscode/
+.idea/
+.notebook/
+
+# Operating systems
+.DS_Store
+Thumbs.db
+
+# Downloaded local executables
+tools/faas-cli/*.exe

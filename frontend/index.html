@@ -1,0 +1,159 @@
+﻿<!doctype html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>COFRAP | Gestion des accès</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <header class="topbar">
+    <div class="brand">
+      <div class="brand-mark" aria-hidden="true">C</div>
+      <div>
+        <strong>COFRAP</strong>
+        <span>Gestion des accès</span>
+      </div>
+    </div>
+    <div class="environment"><span></span> Environnement sécurisé</div>
+  </header>
+
+  <main class="workspace">
+    <aside class="sidebar" aria-label="Navigation principale">
+      <button class="nav-item active" data-view="create" type="button">
+        <span class="nav-icon">+</span>
+        Créer un compte
+      </button>
+      <button class="nav-item" data-view="authenticate" type="button">
+        <span class="nav-icon">✓</span>
+        Authentification
+      </button>
+      <button class="nav-item" data-view="rotate" type="button">
+        <span class="nav-icon">↻</span>
+        Renouvellement
+      </button>
+    </aside>
+
+    <section class="content">
+      <div id="notice" class="notice" role="status" aria-live="polite" hidden></div>
+
+      <section class="view active" id="view-create">
+        <div class="view-header">
+          <p class="eyebrow">Administration des identités</p>
+          <h1>Créer un compte</h1>
+          <p>Générez les identifiants initiaux et activez la double authentification.</p>
+        </div>
+
+        <form id="create-form" class="form-panel">
+          <label for="create-username">Adresse utilisateur</label>
+          <div class="field-row">
+            <input id="create-username" name="username" type="email" placeholder="prenom.nom@cofrap.fr" autocomplete="off" required>
+            <button class="primary-button" type="submit">Créer le compte</button>
+          </div>
+        </form>
+
+        <section id="create-result" class="result-panel" hidden>
+          <div class="result-heading">
+            <div>
+              <span class="status-badge">Compte créé</span>
+              <h2 id="created-username"></h2>
+            </div>
+            <span class="account-state">Activation requise</span>
+          </div>
+
+          <div class="credential-grid delivery-grid">
+            <div class="credential-block">
+              <label>Lien de remise sécurisé</label>
+              <p>Ce QR code permet à l’utilisateur de consulter ses identifiants une seule fois. Il expire après 10 minutes.</p>
+              <div class="delivery-actions">
+                <a id="delivery-link" class="secondary-button" href="#" target="_blank" rel="noopener">Ouvrir la remise</a>
+              </div>
+            </div>
+
+            <div class="qr-block">
+              <div id="qr-loading" class="qr-placeholder">Génération du QR code…</div>
+              <img id="created-qr" alt="QR code de remise unique des identifiants" hidden>
+              <p>À scanner une seule fois par l’utilisateur.</p>
+            </div>
+          </div>
+        </section>
+      </section>
+
+      <section class="view" id="view-authenticate">
+        <div class="view-header">
+          <p class="eyebrow">Contrôle d’accès</p>
+          <h1>Authentification</h1>
+          <p>Validez le mot de passe et le code temporaire de l’utilisateur.</p>
+        </div>
+
+        <form id="authenticate-form" class="form-panel stacked-form">
+          <label for="auth-username">Adresse utilisateur</label>
+          <input id="auth-username" name="username" type="email" placeholder="prenom.nom@cofrap.fr" autocomplete="username" required>
+
+          <label for="auth-password">Mot de passe</label>
+          <input id="auth-password" name="password" type="password" placeholder="Mot de passe" autocomplete="current-password" required>
+
+          <label for="auth-totp">Code à 6 chiffres</label>
+          <input id="auth-totp" name="totp_code" type="text" inputmode="numeric" pattern="[0-9]{6}" maxlength="6" placeholder="000000" autocomplete="one-time-code" required>
+
+          <button class="primary-button" type="submit">Vérifier l’accès</button>
+        </form>
+
+        <section id="auth-result" class="result-panel compact-result" hidden>
+          <span class="success-mark">✓</span>
+          <div>
+            <h2>Accès autorisé</h2>
+            <p id="auth-message"></p>
+          </div>
+        </section>
+      </section>
+
+      <section class="view" id="view-rotate">
+        <div class="view-header">
+          <p class="eyebrow">Cycle de sécurité</p>
+          <h1>Renouveler les identifiants</h1>
+          <p>Remplacez le mot de passe et le secret 2FA d’un compte existant.</p>
+        </div>
+
+        <form id="rotate-form" class="form-panel">
+          <label for="rotate-username">Adresse utilisateur</label>
+          <div class="field-row">
+            <input id="rotate-username" name="username" type="email" placeholder="prenom.nom@cofrap.fr" autocomplete="off" required>
+            <button class="primary-button" type="submit">Renouveler</button>
+          </div>
+        </form>
+
+        <section id="rotate-result" class="result-panel" hidden>
+          <div class="result-heading">
+            <div>
+              <span class="status-badge warning">Identifiants renouvelés</span>
+              <h2 id="rotated-username"></h2>
+            </div>
+            <span class="account-state">Nouvelle activation requise</span>
+          </div>
+
+          <div class="credential-grid">
+            <div class="credential-block">
+              <label>Nouveau mot de passe</label>
+              <div class="secret-value">
+                <code id="rotated-password"></code>
+                <button class="icon-button" id="copy-rotated-password" type="button" title="Copier le mot de passe" aria-label="Copier le mot de passe">⧉</button>
+              </div>
+              <p>L’ancien mot de passe n’est plus valide.</p>
+            </div>
+
+            <div class="qr-block">
+              <div id="rotate-qr-loading" class="qr-placeholder">Génération du QR code…</div>
+              <img id="rotated-qr" alt="Nouveau QR code d'authentification à deux facteurs" hidden>
+              <p>Le précédent secret 2FA est révoqué.</p>
+            </div>
+          </div>
+        </section>
+      </section>
+    </section>
+  </main>
+
+  <script src="app.js"></script>
+</body>
+</html>
+

@@ -1,0 +1,90 @@
+<mxGraphModel dx="1422" dy="762" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1654" pageHeight="1169" math="0" shadow="0">
+  <root>
+    <mxCell id="0" />
+    <mxCell id="1" parent="0" />
+
+    <mxCell id="title" value="COFRAP - Architecture macro du projet serverless" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;fontSize=24;fontStyle=1;fontColor=#172033;" vertex="1" parent="1">
+      <mxGeometry x="190" y="25" width="1260" height="40" as="geometry" />
+    </mxCell>
+
+    <mxCell id="subtitle" value="Vue projet : parcours utilisateur, plateforme applicative, données, sécurité, déploiement et exploitation" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;fontSize=13;fontColor=#495057;" vertex="1" parent="1">
+      <mxGeometry x="280" y="65" width="1080" height="30" as="geometry" />
+    </mxCell>
+
+    <mxCell id="users" value="&lt;b&gt;Utilisateurs / Administrateurs COFRAP&lt;/b&gt;&lt;br&gt;Création de comptes, activation 2FA, authentification" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f8f9fa;strokeColor=#868e96;fontSize=13;fontColor=#212529;spacing=10;" vertex="1" parent="1">
+      <mxGeometry x="70" y="220" width="230" height="95" as="geometry" />
+    </mxCell>
+
+    <mxCell id="access" value="&lt;b&gt;Couche d'accès&lt;/b&gt;&lt;br&gt;DNS / Ingress / HTTPS&lt;br&gt;Point d'entrée unique du service" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#d8f3dc;strokeColor=#2d6a4f;fontSize=13;fontColor=#1b4332;spacing=10;" vertex="1" parent="1">
+      <mxGeometry x="380" y="220" width="230" height="95" as="geometry" />
+    </mxCell>
+
+    <mxCell id="frontend" value="&lt;b&gt;Interface web&lt;/b&gt;&lt;br&gt;Frontend HTML / CSS / JavaScript&lt;br&gt;Portail de démonstration du PoC" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#fff8e1;strokeColor=#f9a825;fontSize=13;fontColor=#3e2723;spacing=10;" vertex="1" parent="1">
+      <mxGeometry x="700" y="220" width="250" height="95" as="geometry" />
+    </mxCell>
+
+    <mxCell id="platform" value="&lt;b&gt;Plateforme cloud-native&lt;/b&gt;&lt;br&gt;Kubernetes local via Minikube&lt;br&gt;Hébergement des composants applicatifs" style="swimlane;html=1;startSize=34;fillColor=#e8f1ff;strokeColor=#4263eb;fontSize=14;fontStyle=1;fontColor=#172033;rounded=1;" vertex="1" parent="1">
+      <mxGeometry x="190" y="390" width="1260" height="360" as="geometry" />
+    </mxCell>
+
+    <mxCell id="openfaas" value="&lt;b&gt;OpenFaaS Community&lt;/b&gt;&lt;br&gt;Gateway API&lt;br&gt;Routage et exécution des fonctions serverless" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f3e8ff;strokeColor=#8e44ad;fontSize=13;fontColor=#2d1436;spacing=10;" vertex="1" parent="platform">
+      <mxGeometry x="70" y="105" width="260" height="105" as="geometry" />
+    </mxCell>
+
+    <mxCell id="functions" value="&lt;b&gt;Services serverless métier&lt;/b&gt;&lt;br&gt;Fonctions Python OpenFaaS&lt;br&gt;Gestion comptes, mots de passe, QR code, 2FA/TOTP, authentification, rotation" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#e7f5ff;strokeColor=#228be6;fontSize=13;fontColor=#102a43;spacing=10;" vertex="1" parent="platform">
+      <mxGeometry x="400" y="95" width="340" height="125" as="geometry" />
+    </mxCell>
+
+    <mxCell id="security" value="&lt;b&gt;Sécurité applicative&lt;/b&gt;&lt;br&gt;Mots de passe complexes 24 caractères&lt;br&gt;Hash des mots de passe&lt;br&gt;2FA obligatoire&lt;br&gt;QR code à usage unique&lt;br&gt;Secrets Kubernetes" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#fff0f6;strokeColor=#c2255c;fontSize=12;fontColor=#4a1028;spacing=10;" vertex="1" parent="platform">
+      <mxGeometry x="810" y="65" width="240" height="175" as="geometry" />
+    </mxCell>
+
+    <mxCell id="database" value="&lt;b&gt;Base de données&lt;/b&gt;&lt;br&gt;PostgreSQL&lt;br&gt;Données utilisateurs et secrets MFA&lt;br&gt;Volume persistant Kubernetes" style="shape=cylinder3d;whiteSpace=wrap;html=1;boundedLbl=1;backgroundOutline=1;size=15;fillColor=#d3f9d8;strokeColor=#2b8a3e;fontSize=12;fontColor=#063b2f;" vertex="1" parent="platform">
+      <mxGeometry x="1110" y="90" width="180" height="130" as="geometry" />
+    </mxCell>
+
+    <mxCell id="cicd" value="&lt;b&gt;Build &amp; déploiement&lt;/b&gt;&lt;br&gt;GitHub repository&lt;br&gt;Docker build&lt;br&gt;Registre OCI Docker Hub / GHCR&lt;br&gt;faas-cli deploy / kubectl" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#fff2cc;strokeColor=#d6b656;fontSize=13;fontColor=#2f2f2f;spacing=10;" vertex="1" parent="1">
+      <mxGeometry x="70" y="830" width="300" height="130" as="geometry" />
+    </mxCell>
+
+    <mxCell id="monitoring" value="&lt;b&gt;Exploitation &amp; suivi&lt;/b&gt;&lt;br&gt;Logs Kubernetes / OpenFaaS&lt;br&gt;Tableau de bord projet&lt;br&gt;Suivi Kanban / Gantt / indicateurs" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f1f3f5;strokeColor=#868e96;fontSize=13;fontColor=#212529;spacing=10;" vertex="1" parent="1">
+      <mxGeometry x="1060" y="830" width="300" height="130" as="geometry" />
+    </mxCell>
+
+    <mxCell id="scope" value="&lt;b&gt;Périmètre du PoC&lt;/b&gt;&lt;br&gt;Architecture portable et gratuite pour démonstration académique&lt;br&gt;Simulation locale d'un environnement cloud-native avec Minikube&lt;br&gt;Technologies retenues dans le benchmark : OpenFaaS, Kubernetes, PostgreSQL, Python" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#edf2ff;strokeColor=#5c7cfa;fontSize=12;fontColor=#172033;spacing=10;" vertex="1" parent="1">
+      <mxGeometry x="480" y="830" width="430" height="130" as="geometry" />
+    </mxCell>
+
+    <mxCell id="f1" value="1. Accès service" style="endArrow=block;html=1;rounded=0;strokeWidth=2;fontSize=11;strokeColor=#2d6a4f;fontColor=#1b4332;" edge="1" parent="1" source="users" target="access">
+      <mxGeometry relative="1" as="geometry" />
+    </mxCell>
+
+    <mxCell id="f2" value="2. Interface web" style="endArrow=block;html=1;rounded=0;strokeWidth=2;fontSize=11;strokeColor=#2d6a4f;fontColor=#1b4332;" edge="1" parent="1" source="access" target="frontend">
+      <mxGeometry relative="1" as="geometry" />
+    </mxCell>
+
+    <mxCell id="f3" value="3. Appels API HTTP" style="endArrow=block;html=1;rounded=0;strokeWidth=2;fontSize=11;strokeColor=#7b2cbf;fontColor=#2d1436;" edge="1" parent="1" source="frontend" target="openfaas">
+      <mxGeometry relative="1" as="geometry" />
+    </mxCell>
+
+    <mxCell id="f4" value="4. Invocation serverless" style="endArrow=block;html=1;rounded=0;strokeWidth=2;fontSize=11;strokeColor=#228be6;fontColor=#102a43;" edge="1" parent="platform" source="openfaas" target="functions">
+      <mxGeometry relative="1" as="geometry" />
+    </mxCell>
+
+    <mxCell id="f5" value="contrôles sécurité" style="endArrow=block;html=1;rounded=0;strokeWidth=2;fontSize=11;strokeColor=#c2255c;fontColor=#4a1028;" edge="1" parent="platform" source="functions" target="security">
+      <mxGeometry relative="1" as="geometry" />
+    </mxCell>
+
+    <mxCell id="f6" value="données sécurisées" style="endArrow=block;html=1;rounded=0;strokeWidth=2;fontSize=11;strokeColor=#2b8a3e;fontColor=#063b2f;" edge="1" parent="platform" source="security" target="database">
+      <mxGeometry relative="1" as="geometry" />
+    </mxCell>
+
+    <mxCell id="f7" value="images + manifests" style="endArrow=block;html=1;rounded=0;strokeWidth=2;fontSize=11;strokeColor=#d6b656;fontColor=#2f2f2f;dashed=1;" edge="1" parent="1" source="cicd" target="platform">
+      <mxGeometry relative="1" as="geometry" />
+    </mxCell>
+
+    <mxCell id="f8" value="logs, métriques, suivi" style="endArrow=block;html=1;rounded=0;strokeWidth=2;fontSize=11;strokeColor=#868e96;fontColor=#212529;dashed=1;" edge="1" parent="1" source="platform" target="monitoring">
+      <mxGeometry relative="1" as="geometry" />
+    </mxCell>
+  </root>
+</mxGraphModel>

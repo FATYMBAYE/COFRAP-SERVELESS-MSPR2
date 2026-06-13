@@ -1,0 +1,84 @@
+version: 1.0
+provider:
+  name: openfaas
+  gateway: http://127.0.0.1:8080
+functions:
+  generate-password:
+    lang: python3-http
+    handler: ./generate-password
+    image: fatymbaye/generate-password:0.1.0
+
+
+  generate-totp:
+    lang: python3-http
+    handler: ./generate-totp
+    image: fatymbaye/generate-totp:0.1.0
+
+
+  generate-qr:
+    lang: python3-http
+    handler: ./generate-qr
+    image: fatymbaye/generate-qr:0.1.0
+
+
+  create-user:
+    lang: python3-http
+    handler: ./create-user
+    image: fatymbaye/create-user:0.4.0
+    environment:
+      POSTGRES_HOST: postgres.cofrap-data.svc.cluster.local
+      POSTGRES_PORT: "5432"
+      POSTGRES_DB: cofrap
+      POSTGRES_USER: cofrap_app
+      OPENFAAS_GATEWAY: http://gateway.openfaas:8080
+    secrets:
+      - cofrap-postgres-password
+      - credential-delivery-key
+
+
+
+  authenticate-user:
+    lang: python3-http
+    handler: ./authenticate-user
+    image: fatymbaye/authenticate-user:0.2.0
+    environment:
+      POSTGRES_HOST: postgres.cofrap-data.svc.cluster.local
+      POSTGRES_PORT: "5432"
+      POSTGRES_DB: cofrap
+      POSTGRES_USER: cofrap_app
+    secrets:
+      - cofrap-postgres-password
+      - credential-delivery-key
+
+
+  rotate-credentials:
+    lang: python3-http
+    handler: ./rotate-credentials
+    image: fatymbaye/rotate-credentials:0.2.0
+    environment:
+      POSTGRES_HOST: postgres.cofrap-data.svc.cluster.local
+      POSTGRES_PORT: "5432"
+      POSTGRES_DB: cofrap
+      POSTGRES_USER: cofrap_app
+      OPENFAAS_GATEWAY: http://gateway.openfaas:8080
+    secrets:
+      - cofrap-postgres-password
+      - credential-delivery-key
+
+
+  redeem-credentials:
+    lang: python3-http
+    handler: ./redeem-credentials
+    image: fatymbaye/redeem-credentials:0.1.0
+    environment:
+      POSTGRES_HOST: postgres.cofrap-data.svc.cluster.local
+      POSTGRES_PORT: "5432"
+      POSTGRES_DB: cofrap
+      POSTGRES_USER: cofrap_app
+    secrets:
+      - cofrap-postgres-password
+      - credential-delivery-key
+
+
+
+
