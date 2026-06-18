@@ -1,4 +1,4 @@
 bcrypt==4.2.1
-cryptography==44.0.0
+cryptography==46.0.7
 psycopg[binary]==3.2.3
 pyotp==2.9.0
